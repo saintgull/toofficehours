@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toronto Office Hours</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Bodoni:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Lexend+Giga:wght@100..900&family=Lexend:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Lexend", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 400;
+            font-style: normal;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background-color: #faf9f5;
+            background-image: url('lineart rooms.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        .hero {
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-family: "Libre Bodoni", serif;
+            font-optical-sizing: auto;
+            font-size: 4.5rem;
+            font-weight: 900;
+            font-style: normal;
+            letter-spacing: -0.02em;
+            margin: 0;
+            color: #333;
+        }
+
+        .hero p {
+            font-family: "Lexend Giga", sans-serif;
+            font-optical-sizing: auto;
+            font-size: 1.8rem;
+            color: #333;
+            margin-top: 1.5rem;
+            font-weight: 700;
+            font-style: normal;
+            letter-spacing: 0.02em;
+        }
+
+        .content {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 2rem;
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .panel-container {
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            width: 45%;
+            height: 400px;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .panel {
+            position: absolute;
+            top: 2rem;
+            left: 2rem;
+            right: 2rem;
+            bottom: 2rem;
+            opacity: 0;
+            transform: translateX(100%);
+            transition: all 0.3s ease;
+        }
+
+        .panel.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .panel.prev {
+            transform: translateX(-100%);
+        }
+
+        .nav-arrows {
+            position: absolute;
+            bottom: 1rem;
+            right: 1rem;
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .nav-arrow {
+            width: 40px;
+            height: 40px;
+            background: #333;
+            color: white;
+            border: none;
+            border-radius: 0;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: background 0.3s ease;
+        }
+
+        .nav-arrow:hover {
+            background: #555;
+        }
+
+        .nav-arrow:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        .image-container {
+            width: 45%;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .image-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.5);
+            padding: 1.5rem;
+            text-align: center;
+            font-family: "Lexend", sans-serif;
+            font-optical-sizing: auto;
+            font-size: 1.4rem;
+            font-weight: 700;
+            font-style: normal;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+        }
+
+        .image-overlay a {
+            color: #333;
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .image-overlay a:hover {
+            text-decoration: underline;
+        }
+
+        .panel h3 {
+            font-family: "Lexend Giga", sans-serif;
+            font-optical-sizing: auto;
+            font-size: 1.5rem;
+            color: #704214;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            font-style: normal;
+        }
+
+        .panel p {
+            line-height: 1.6;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        .panel a {
+            color: #704214;
+            font-weight: 600;
+            text-decoration: underline;
+        }
+
+        .panel a:hover {
+            text-decoration: none;
+        }
+
+        .footer {
+            padding: 2rem;
+            text-align: center;
+            background-color: #fafafa;
+        }
+
+        .ics-placeholder {
+            display: inline-block;
+            background: #704214;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 0;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .ics-placeholder:hover {
+            background: #8b5317;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .content {
+                flex-direction: column;
+            }
+
+            .panel-container,
+            .image-container {
+                width: 100%;
+                height: 300px;
+            }
+
+            .panel-container {
+                padding: 1.5rem;
+            }
+
+            .panel h3 {
+                font-size: 1.25rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="hero">
+        <h1>TORONTO OFFICE HOURS</h1>
+        <p>come join us!! every friday at 6:30 pm!!</p>
+    </header>
+
+    <main class="content">
+        <div class="panel-container">
+            <div class="panel active" id="panel-what">
+                <h3>what?</h3>
+                <p>Weekly public gathering every Friday at Rooms on Dupont Street starting at 6:30 pm. Easy drop-in if you need to bail early for the Rooms dance party or anything else.</p>
+            </div>
+            
+            <div class="panel" id="panel-who">
+                <h3>who?</h3>
+                <p>Starts with people I've had a good conversation with in Toronto, then anyone they've had a good conversation with, too. Originally, the informal "office hours" concept consists of sending out an invite to your followers on Twitter to meet you at a specific bar. I would like for this to not only unite people who <a href="https://x.com/earnestpost" target="_blank">follow me on Twitter</a>, hence the broader reach!</p>
+            </div>
+            
+            <div class="panel" id="panel-why">
+                <h3>why?</h3>
+                <p>Because Toronto is full of interesting people who should bump into each other more often. A standing, low-key slot makes it simple to keep showing up and slowly turn strangers into a real community!</p>
+            </div>
+            
+            <div class="nav-arrows">
+                <button class="nav-arrow" id="prev-btn" disabled>←</button>
+                <button class="nav-arrow" id="next-btn">→</button>
+            </div>
+        </div>
+        
+        <div class="image-container">
+            <div class="image-overlay">
+                current location: <a href="https://www.google.com/maps/place/rooms+dupont/data=!4m2!3m1!1s0x882b3548013e87af:0xdb6bf1a6bea82eb1?sa=X&ved=1t:242&ictx=111" target="_blank">Rooms on Dupont Street</a>
+            </div>
+            <img src="rooms on dupont.webp" alt="Rooms on Dupont">
+        </div>
+    </main>
+
+    <footer class="footer">
+        <a href="toronto-office-hours.ics" class="ics-placeholder" download>📅 Add to Calendar</a>
+    </footer>
+
+    <script>
+        const panels = ['what', 'who', 'why'];
+        let currentPanel = 0;
+        
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        
+        function updatePanel() {
+            // Remove all active and prev classes
+            document.querySelectorAll('.panel').forEach(panel => {
+                panel.classList.remove('active', 'prev');
+            });
+            
+            // Add active class to current panel
+            document.getElementById(`panel-${panels[currentPanel]}`).classList.add('active');
+            
+            // Add prev class to panels before current
+            for (let i = 0; i < currentPanel; i++) {
+                document.getElementById(`panel-${panels[i]}`).classList.add('prev');
+            }
+            
+            // Update button states
+            prevBtn.disabled = currentPanel === 0;
+            nextBtn.disabled = currentPanel === panels.length - 1;
+        }
+        
+        prevBtn.addEventListener('click', () => {
+            if (currentPanel > 0) {
+                currentPanel--;
+                updatePanel();
+            }
+        });
+        
+        nextBtn.addEventListener('click', () => {
+            if (currentPanel < panels.length - 1) {
+                currentPanel++;
+                updatePanel();
+            }
+        });
+        
+        // Touch support for swipe
+        let touchStartX = 0;
+        let touchEndX = 0;
+        
+        const panelContainer = document.querySelector('.panel-container');
+        
+        panelContainer.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+        
+        panelContainer.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        });
+        
+        function handleSwipe() {
+            const swipeThreshold = 50;
+            const diff = touchStartX - touchEndX;
+            
+            if (Math.abs(diff) > swipeThreshold) {
+                if (diff > 0 && currentPanel < panels.length - 1) {
+                    // Swipe left - next panel
+                    currentPanel++;
+                    updatePanel();
+                } else if (diff < 0 && currentPanel > 0) {
+                    // Swipe right - previous panel
+                    currentPanel--;
+                    updatePanel();
+                }
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Toronto Office Hours//NONSGML v1.0//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Toronto Office Hours
+X-WR-TIMEZONE:America/Toronto
+BEGIN:VTIMEZONE
+TZID:America/Toronto
+BEGIN:STANDARD
+DTSTART:20231105T020000
+RRULE:FREQ=YEARLY;BYMONTH=11;BYDAY=1SU
+TZOFFSETFROM:-0400
+TZOFFSETTO:-0500
+TZNAME:EST
+END:STANDARD
+BEGIN:DAYLIGHT
+DTSTART:20240310T020000
+RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=2SU
+TZOFFSETFROM:-0500
+TZOFFSETTO:-0400
+TZNAME:EDT
+END:DAYLIGHT
+END:VTIMEZONE
+BEGIN:VEVENT
+DTSTART;TZID=America/Toronto:20250718T183000
+DTEND;TZID=America/Toronto:20250718T210000
+RRULE:FREQ=WEEKLY;BYDAY=FR
+DTSTAMP:20250715T000000Z
+UID:toronto-office-hours@earnestpost
+CREATED:20250715T000000Z
+DESCRIPTION:Weekly public gathering every Friday at Rooms on Dupont Street. Easy drop-in if you need to bail early for the Rooms dance party or anything else.\n\nStarts with people I've had a good conversation with in Toronto\, then anyone they've had a good conversation with\, too.\n\nBecause Toronto is full of interesting people who should bump into each other more often!
+LAST-MODIFIED:20250715T000000Z
+LOCATION:Rooms on Dupont Street\, Toronto\, ON
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Toronto Office Hours
+TRANSP:OPAQUE
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Toronto Office Hours starting in 30 minutes!
+TRIGGER:-PT30M
+END:VALARM
+END:VEVENT
+END:VCALENDAR
