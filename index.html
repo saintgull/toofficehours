@@ -91,6 +91,8 @@
             opacity: 0;
             transform: translateX(100%);
             transition: all 0.3s ease;
+            overflow-y: auto;
+            padding-right: 1rem;
         }
 
         .panel.active {
@@ -202,6 +204,40 @@
 
         .panel a:hover {
             text-decoration: none;
+        }
+
+        /* Custom scrollbar for panels */
+        .panel::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .panel::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.05);
+            border-radius: 4px;
+        }
+
+        .panel::-webkit-scrollbar-thumb {
+            background: rgba(112, 66, 20, 0.3);
+            border-radius: 4px;
+        }
+
+        .panel::-webkit-scrollbar-thumb:hover {
+            background: rgba(112, 66, 20, 0.5);
+        }
+
+        .office-horse {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 120px;
+            height: auto;
+            z-index: 100;
+            opacity: 0.9;
+            transition: transform 0.3s ease;
+        }
+
+        .office-horse:hover {
+            transform: scale(1.1);
         }
 
         .footer {
@@ -367,5 +403,7 @@
             }
         }
     </script>
+
+    <img src="office horse.png" alt="Office Horse" class="office-horse">
 </body>
 </html>
