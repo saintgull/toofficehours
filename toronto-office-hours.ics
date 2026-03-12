@@ -23,13 +23,13 @@ TZNAME:EDT
 END:DAYLIGHT
 END:VTIMEZONE
 BEGIN:VEVENT
-DTSTART;TZID=America/Toronto:20250718T183000
+DTSTART;TZID=America/Toronto:20250718T193000
 DTEND;TZID=America/Toronto:20250718T210000
 RRULE:FREQ=WEEKLY;BYDAY=FR;UNTIL=20251129T210000Z
 DTSTAMP:20250715T000000Z
 UID:toronto-office-hours@earnestpost
 CREATED:20250715T000000Z
-DESCRIPTION:Weekly public gathering every Friday at Victory Cafe (Bloor+Bathurst) starting at 6:30 pm and going until approximately 9\, or until you make other plans. Look for the table with the horse figurine\, come sit down\, introduce yourself\, and meet people!\n\nStarts with people I've had a good conversation with in Toronto\, then anyone they've had a good conversation with\, too.\n\nBecause Toronto is full of interesting people who should bump into each other more often!
+DESCRIPTION:Weekly public gathering every Friday at Victory Cafe (Bloor+Bathurst) starting at 7:30 pm and going until approximately 9\, or until you make other plans. Look for the table with the horse figurine\, come sit down\, introduce yourself\, and meet people!\n\nStarts with people I've had a good conversation with in Toronto\, then anyone they've had a good conversation with\, too.\n\nBecause Toronto is full of interesting people who should bump into each other more often!
 LAST-MODIFIED:20250715T000000Z
 LOCATION:Victory Cafe\, Bloor and Bathurst\, Toronto\, ON
 SEQUENCE:0
